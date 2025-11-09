@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Foodie Express - Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fffaf0;
+      color: #333;
+    }
+
+    header {
+      background-color: #ff4500;
+      padding: 30px 20px;
+      text-align: center;
+      color: white;
+    }
+
+    nav {
+      background-color: #ff6347;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 12px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 18px;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      background-image: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092');
+      background-size: cover;
+      background-position: center;
+      padding: 100px 20px;
+      text-align: center;
+      color: white;
+      
+    }
+
+    .hero h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 6px #000;
+    }
+
+    .hero p {
+      font-size: 1.3em;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      text-shadow: 1px 1px 4px #000;
+    }
+
+    .hero button {
+      padding: 14px 30px;
+      font-size: 1em;
+      background-color: #ff6347;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .hero button:hover {
+      background-color: #e64500;
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin: 50px auto;
+      max-width: 1000px;
+      padding: 0 20px;
+    }
+
+    .feature {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      width: 280px;
+      margin: 20px;
+    }
+
+    .feature h3 {
+      color: #ff4500;
+      margin-bottom: 10px;
+    }
+
+    .feature p {
+      font-size: 1em;
+      color: #666;
+    }
+
+    footer {
+      background-color: #ff6347;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.2em;
+      }
+      .hero p {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Welcome to Foodie Express</h1>
+    <p>Your favorite food delivered fast & fresh</p>
+  </header>
+
+  <nav>
+    <a href="{{ url_for('index') }}">Home</a>
+  <a href="{{ url_for('menu') }}">Menu</a>
+  <a href="{{ url_for('cart') }}">Cart</a>
+  <a href="{{ url_for('order') }}">Order</a>
+  <a href="{{ url_for('admin') }}">Admin</a>
+  <a href="{{ url_for('about') }}">About Us</a><!-- Added About Us -->
+  </nav>
+
+  <section class="hero">
+    <h1>Delicious Meals Delivered To You</h1>
+    <p>Order from a wide variety of mouth-watering dishes, prepared fresh and delivered fast at your doorstep!</p>
+    <button onclick="window.location.href='/menu'">View Menu</button>
+  </section>
+
+  <section class="features">
+    <div class="feature">
+      <h3>Fast Delivery</h3>
+      <p>We ensure lightning-fast delivery so your food arrives hot and on time.</p>
+    </div>
+    <div class="feature">
+      <h3>Top Quality</h3>
+      <p>Only the freshest ingredients are used by our expert chefs.</p>
+    </div>
+    <div class="feature">
+      <h3>Easy to Order</h3>
+      <p>Simple and secure ordering process from any device.</p>
+    </div>
+  </section>
+
+  <footer id="about">
+    <h3>About Us</h3>
+    <p>Foodie Express is a modern food ordering platform committed to delivering the best culinary experiences right to your door. Whether you crave street food or gourmet meals, we’ve got something for every foodie!</p>
+    <p>&copy; 2025 Foodie Express. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

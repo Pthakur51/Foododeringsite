@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Menu - Foodie Express</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fffaf0;
+      color: #333;
+    }
+
+    header {
+      background-color: #ff4500;
+      padding: 25px 20px;
+      text-align: center;
+      color: white;
+    }
+
+    nav {
+      background-color: #ff6347;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 12px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .menu-item {
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+      text-align: center;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .menu-item img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      height: 170px;
+      object-fit: cover;
+    }
+
+    .menu-item h3 {
+      margin: 10px 0 5px;
+      font-size: 1.3em;
+      color: #ff4500;
+    }
+
+    .menu-item p {
+      font-size: 1em;
+      color: #666;
+    }
+
+    .menu-item .price {
+      font-weight: bold;
+      color: #333;
+      margin: 10px 0;
+    }
+
+    .menu-item button {
+      background-color: #ff4500;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .menu-item button:hover {
+      background-color: #e03e00;
+    }
+
+    footer {
+      background-color: #ff6347;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🍽️ Our Menu</h1>
+    <p>Choose from our delicious range of dishes</p>
+  </header>
+
+  
+    <nav>
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('menu') }}">Menu</a>
+        <a href="{{ url_for('cart') }}">Cart</a>
+        <a href="{{ url_for('order') }}">Order</a>
+        <a href="{{ url_for('admin') }}">Admin</a>
+        <a href="{{ url_for('about') }}">About Us</a>
+      </nav>
+      
+ 
+
+  <div class="container">
+    <div class="menu-grid">
+        
+        {% for item in items %}
+  <div class="menu-item">
+    <img src="{{ url_for('static', filename='images/' ~ item['image']) }}" alt="{{ item['name'] }}">
+
+    <h3>{{ item['name'] }}</h3>
+    <p>{{ item['description'] }}</p>
+    <div class="price">₹{{ item['price'] }}</div>
+
+    <form action="{{ url_for('add_to_cart', item_id=item['id']) }}" method="POST">
+      <button type="submit">Add to Cart</button>
+    </form>
+  </div>
+{% endfor %}
+
+  </div>
+
+  <footer>
+    &copy; 2025 Foodie Express. All rights reserved.
+  </footer>
+
+  <script>
+    function addToCart(itemName) {
+      alert(itemName + " added to cart!");
+      // This will later connect to Flask backend for actual cart storage
+    }
+  </script>
+
+</body>
+</html>
